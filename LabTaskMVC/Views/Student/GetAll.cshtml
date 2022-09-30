@@ -1,0 +1,51 @@
+﻿@model IEnumerable<LabTaskMVC.Models.Student>
+
+@{
+    ViewBag.Title = "GetAll";
+}
+
+<h2>GetAll</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.StdName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.StdAge)
+        </th>
+        @*<th>
+            @Html.DisplayNameFor(model => model.Student1.StdName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Student2.StdName)
+        </th>*@
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.StdName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.StdAge)
+        </td>
+        @*<td>
+            @Html.DisplayFor(modelItem => item.Student1.StdName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Student2.StdName)
+        </td>*@
+        <td>
+            @Html.ActionLink("Edit", "Update", new { id=item.StdId }) |
+            @Html.ActionLink("Details", "GetById", new { Id=item.StdId }) |
+            @Html.ActionLink("Delete", "Delete", new { Id=item.StdId })
+        </td>
+    </tr>
+}
+
+</table>
